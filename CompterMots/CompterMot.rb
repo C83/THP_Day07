@@ -10,13 +10,17 @@
 #
 
 def jean_michel_data (corpus, dictionnaire)
-	result = Hash.new(0)
+	
+	result = Hash.new(0) 	# On met la valeur par défaut à 0 si la clé n'existe pas. 
 	splitted_corpus = corpus.split
 
+	# boucle dans boucle 
 	splitted_corpus.each { |corpus_word|
 		dictionnaire.each { |dictionnary_word|
 			if corpus_word.downcase.include?(dictionnary_word.downcase)
-				result[dictionnary_word]+=1
+				# Ne pas faire l'inverse : on veut que la condition soit vraie
+				# même si le mot du dictionnaire est en partie dans le mot du corpus
+				result[dictionnary_word]+=1		# Je rajoute 1 à la valeur de la clé dictionnaire_word
 			end
 		}
 	}

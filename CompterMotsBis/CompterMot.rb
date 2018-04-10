@@ -6,18 +6,39 @@
 # Après les mots communs, Google sont curieux, et veulent savoir combien il y a de gros mots dans l'oeuvre de Shakeaspeare, pour voir si l'auteur anglais était un coquin. Voici une liste de gros mots au format .txt. Télécharge ce fichier, mets-le à côté de Shakespeare.txt, 
 # et trouve un moyen de transformer cette liste de mot au format txt en une array qui contient les mots convertits en string.
 
+# Fonction jean_michel_data_for_google
+# Params : 
+# 	  le pathfile du corpus
+#     le dictionnaire, une array de mots pour qui tu vas compter les occurences dans le corpus
+# Result : 
+# 	  Hash avec nombre d'occurence des mots
+#
 
 def jean_michel_data_for_google(file_path,dictionnary)
-	corpus = get_file_as_string(file_path)
-	jean_michel_data(corpus, dictionnary)
+	corpus = get_file_as_string(file_path)	# On fait appel au corpus via l'adresse du fichier
+	jean_michel_data(corpus, dictionnary)	# Pour factoriser le code, on fait appel à la fonction créée précédemment
 end
 
+# Fonction jean_michel_data_with_dictionnary_from_text_for_google
+# Params : 
+# 	  le pathfile du corpus
+#     le pathfile du dictionnaire
+# Result : 
+# 	  Hash avec nombre d'occurence des mots
+#
 def jean_michel_data_with_dictionnary_from_text_for_google(file_path,dictionnary_path)
-	corpus = get_file_as_string(file_path)
-	dictionnary = get_file_as_string(dictionnary_path).split("\r\n")
-	jean_michel_data(corpus, dictionnary)
+	corpus = get_file_as_string(file_path) 	# On fait appel au corpus via l'adresse du fichier
+	# On fait appel au dictionnaire via l'adresse du fichier et on split le string
+	dictionnary = get_file_as_string(dictionnary_path).split("\r\n") 
+	jean_michel_data(corpus, dictionnary)	# Pour factoriser le code, on fait appel à la fonction créée précédemment
 end
 
+# Fonction get_file_as_string
+# Params : 
+# 	  le pathfile du fichier
+# Result : 
+# 	  contenu dans un string
+#
 def get_file_as_string(filename)
   data = ''
   f = File.open(filename, "r") 
@@ -27,11 +48,7 @@ def get_file_as_string(filename)
   return data
 end
 
-# ##### MAIN #####
-# xml_data = get_file_as_string 'Pizza.hbm.xml'
-# # print out the string
-# puts xml_data
-
+# Vu précédemment
 def jean_michel_data (corpus, dictionnary)
 	result = Hash.new(0)
 	splitted_corpus = corpus.split

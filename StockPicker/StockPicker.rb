@@ -3,6 +3,12 @@
 # Params : 
 # 	array : le tableau des prix par jour
 # Return : [jour où acheter, jour où vendre ]
+# 					ORIGIN													TRANSPOSER 																RESULTAT
+# 	jour1 { company1 => prix1j1, company2 => prix2j1}		company1 {jour1 => prix1j1, jour2 => prix1j2, jour3 => prix1j3}				{company1 => [jour1, jour3], company2 => [jour1, jour2]}
+# 	jour2 { company1 => prix1j2, company2 => prix2j2} 	=> 	company2 {jour1 => prix 2j1, jour2 => prix2j2, jour3 => prix2j3 }	=> 		
+# 	jour3 { company1 => prix1j3, company2 => prix2j3}			
+#
+
 def trader_du_dimanche(array)
 	
 	index_buy = 0
@@ -24,6 +30,12 @@ def trader_du_dimanche(array)
 	return [index_buy, index_sell]
 end	
 
+# Fonction trader_du_lundi
+# Permet de retourner les jours d'achat et de revente pour maximiser les bénéfices pour chaque entreprise
+# Params : 
+# 	array_of_hash : un tableau de hash par jour contenant "entreprise" => prix
+# Return : hash avec "entreprise" => [jour où acheter, jour où vendre ]
+#
 def trader_du_lundi (array_of_hash)
 	result = {}
 	hash_enterprise_price = transposition_to_enterprise(array_of_hash)
@@ -33,6 +45,11 @@ def trader_du_lundi (array_of_hash)
 	return result
 end
 
+# Fonction transposition_to_enterprise
+# Permet de transposer les informations dans un format adapté à la fonction trader_du_dimanche
+# Params : array_of_hash : un tableau de hash par jour contenant "entreprise" => prix
+# Return : hash avec "entreprise" => [price jour1, price jour2 etc...]
+#
 def transposition_to_enterprise(array_of_hash)
 	result = Hash.new
 	array_of_hash.each do |hash_of_day|
