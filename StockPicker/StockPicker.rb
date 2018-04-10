@@ -1,3 +1,8 @@
+# Fonction trader_du_dimanche
+# Permet de retourner les jours d'achat et de revente pour maximiser les bénéfices
+# Params : 
+# 	array : le tableau des prix par jour
+# Return : [jour où acheter, jour où vendre ]
 def trader_du_dimanche(array)
 	
 	index_buy = 0
